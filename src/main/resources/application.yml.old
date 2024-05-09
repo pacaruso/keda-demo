@@ -17,26 +17,20 @@ spring:
     properties:
       hibernate:
         globally_quoted_identifiers: true
-
 management:
-  health:
-    defaults:
-      enabled: false
-    hazelcast:
-      enabled: true
-    db:
-      enabled: true
   endpoint:
     health:
-      group:
-        readiness:
-          include: "myReadinessIndicator"
-        liveness:
-          include: "myLivenessIndicator"
-      show-components: always
       show-details: always
-      probes:
-        enabled: true
+      show-components: always
+  health:
+    livenessState:
+      enabled: false
+    readinessState:
+      enabled: false
+    probes:
+      enabled: false
+      show-details: always
+      show-components: always
     web:
       exposure:
         include: health, metrics, prometheus
