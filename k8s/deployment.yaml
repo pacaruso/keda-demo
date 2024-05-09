@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: keda-demo
+  name: keda-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keda-demo
+  template:
+    metadata:
+      labels:
+        app: keda-demo
+    spec:
+      containers:
+        - image: quay.io/openshift-pipeline/keda-demo:latest
+          imagePullPolicy: Always
+          name: keda-demo
+          ports:
+            - containerPort: 8080
+              protocol: TCP
